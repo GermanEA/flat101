@@ -13,6 +13,12 @@ export const Paginator = ({ totalCount, itemsPerPage, currentPage }) => {
     const dividePage = () => {
         let pages = [];
         const pagesNumber = Math.ceil(totalCount / itemsPerPage);
+
+        let pagesShow = [];
+
+        if( currentPage > 1 ) {
+            
+        }
         
         for( let i = 1; i <= pagesNumber; i++ ) {
             pages.push(i);

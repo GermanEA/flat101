@@ -1,0 +1,16 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+// Base
+@import 'base/settings';
+@import './base/base';
+
+// Views
+@import '../views/home/home';
+
+// Components
+@import '../components/menu/menu';
+@import '../components/activityIndicator/activityIndicator';
+@import '../components/products/productCard';
+@import '../components/paginator/paginator';
+@import '../components/filterSelect/filterSelect';

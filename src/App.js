@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import  store  from './redux/store/store';
 
-import { Home } from "./routers/Home";
-import './assets/styles/styles.scss';
+import Home from "./views/home";
+import './styles/styles.scss';
 
 const App = () => {
 

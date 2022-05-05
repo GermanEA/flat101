@@ -1,0 +1,56 @@
+
+.main__container {
+    width: 100%;
+    position: relative;
+
+    .nav__container {   
+        background-color: $primaryBackground;
+        border-bottom: 1px solid $greyLight;     
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .content__container {
+        margin-top: 56px;
+        z-index: 0;
+
+        .info__container {
+            @include flex(100%, column, center, center);
+            border-bottom: 1px solid $greyLight;
+            box-sizing: border-box;
+            padding: 15px;
+            color: $greyDark;
+
+            .info__number {                
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+
+            .info__result {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }
+
+        .filters__container {
+            @include flex(100%, row, flex-start, center);
+        }
+
+        .products__container {
+            @include flex(100%, row, flex-start, center);
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+    
+        .paginator__container {
+            @include flex(100%, row, center, center);
+            background-color: $primaryBackground;
+            border-top: 1px solid $greyLight;
+            box-sizing: border-box;
+            padding: 30px 10px;
+        }
+    }
+
+}

@@ -1,11 +1,11 @@
 import { BiX, BiUser, BiSearch } from 'react-icons/bi';
 
-export const MenuApp = () => {
+export const Menu = () => {
     return (
         <div className="nav__main">
             <div className="nav__left">
                 <BiX 
-                    size={ '2.5rem' }
+                    size={ '2rem' }
                     className="left__Item"
                 />
             </div>

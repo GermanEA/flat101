@@ -1,0 +1,36 @@
+.select__container {
+    @include flex(50%, column, space-between, center);
+    border-bottom: 1px solid $greyLight;
+    color: $greyDark;
+    padding: 10px 15px;
+    position: relative;
+
+    &:nth-child(odd) {
+        border-right: 1px solid $greyLight;
+    }
+
+    .select__wrapper {
+        @include flex(100%, row, space-between, center);
+        color: $greyDark;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        border: 0px;
+    }
+
+    .options__wrapper {
+        @include flex(100%, column, center, center);
+        position: absolute;
+        background-color: $primaryBackground;
+        top: 41px;
+        box-sizing: border-box;
+        z-index: 100;
+
+        .select__item {
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 10px 20px;
+            border-top: 1px solid $greyLight;
+        }
+    }
+}
