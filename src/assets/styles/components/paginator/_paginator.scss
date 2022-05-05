@@ -1,0 +1,15 @@
+.paginator__wrapper {
+    @include flex(100%, row, center, center);
+
+    .paginator__item {
+        @include flex(100%, row, center, center);
+        font-size: 1.3rem;
+        color: $greyMedium;
+        width: 50px;
+        height: 50px;
+
+        &.active {
+            color: $black;
+        }
+    }
+}

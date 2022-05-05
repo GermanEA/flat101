@@ -1,0 +1,33 @@
+.indicator__wrapper {
+    height: calc(100vh - 61px);
+    width: 100%;
+
+    .indicator__item {
+        display: inline-block;
+        height: 80px;
+        left: calc(50% - 40px);
+        position: absolute;
+        top: calc(50% - 40px);
+        width: 80px;
+
+        &:after {
+            content: " ";
+            animation: indicator 1.2s linear infinite;
+            display: block;
+            border-radius: 50%;
+            border: 6px solid $greyDark;
+            border-color: $greyDark transparent $greyDark transparent;
+            height: 64px;
+            width: 64px;
+        }
+    }
+}
+
+@keyframes indicator {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}

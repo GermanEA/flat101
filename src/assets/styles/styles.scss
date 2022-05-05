@@ -1,0 +1,13 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+// Base
+@import 'base/settings';
+@import './base/base';
+
+// Components
+@import './routers/home';
+@import './components/menu/menu';
+@import './components/common/activityIndicator';
+@import './components/products/productCard';
+@import './components/paginator/paginator';

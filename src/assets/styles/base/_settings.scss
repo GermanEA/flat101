@@ -1,0 +1,17 @@
+// Mixin
+@mixin flex($width, $direction, $justify, $align) {
+    align-items: $align;
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    width: $width;
+}
+
+// Colores
+$black: #343434;
+$greyLight: #e3e3e3;
+$greyMedium: #c2c2c2;
+$greyDark: #999999;
+$primaryBackground: #ffffff;
+$primaryColor: #1e1e1e;
+$red: #fc4141;

@@ -1,0 +1,21 @@
+.nav__main {
+    @include flex(100%, row, flex-start, center);
+    color: $greyDark;
+
+    .nav__left {
+        @include flex(50%, row, flex-start, center);
+
+        .left__Item {
+            padding: 10px 20px;
+        }
+    }
+
+    .nav__right {
+        @include flex(50%, row, flex-end, center);
+
+        .right__item {
+            border-left: 1px solid $greyLight;
+            padding: 10px 20px;
+        }
+    }
+}
