@@ -1,6 +1,6 @@
 import { BiChevronDown } from 'react-icons/bi';
 
-export const FilterSelect = ({ name, options, visible, setVisible }) => {
+export const FilterSelect = ({ name, options, visible, setVisible, callback }) => {
 
     const handleOnClickSelect = () => {
         setVisible(!visible);
@@ -8,7 +8,7 @@ export const FilterSelect = ({ name, options, visible, setVisible }) => {
 
     const handleOnClickOption = (value) => {
         setVisible(!visible);
-        console.log(value);
+        callback(value);
     }
 
     return (

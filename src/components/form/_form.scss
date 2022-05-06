@@ -1,0 +1,112 @@
+.form__container {
+    @include flex(100%, column, flex-start, flex-start);
+    box-sizing: border-box;
+    padding: 20px;
+
+    .form__item {
+        width: 100%;
+        margin-bottom: 20px;
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid $greyDark;
+            border-radius: 2px;
+
+            &.has-error {
+                border: 1px solid $red;
+            }
+        }
+
+        .form__error {
+            font-size: 0.8rem;
+            color: $red;
+        }
+    }
+
+    .form__checkbox {
+        @include flex(100%, row, center, center);
+        margin-bottom: 20px;
+
+        .chk__container {
+            display: block;
+            color: $black;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            &:hover input ~ .chk__checkmark {
+                background-color: $greyLight;
+            }
+
+            input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+
+                &:checked ~ .chk__checkmark {
+                    background-color: $red;
+                    border-color: $red;
+                }
+
+                &:checked ~ .chk__checkmark:after {
+                    display: block;
+                }
+            }
+
+            .chk__checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                background-color: $white;
+                border: 1px solid $greyDark;
+                border-radius: 50%;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                    left: 9px;
+                    top: 5px;
+                    width: 5px;
+                    height: 10px;
+                    border: solid $white;
+                    border-width: 0 3px 3px 0;
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+
+    .form__submit {
+        width: 100%;
+
+        input {
+            width: 100%;
+            padding: 10px;
+            background-color: $greyLight;
+            border: 1px solid $greyDark;
+            border-radius: 2px;
+            font-size: 1.2rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $greyMedium;
+            }
+        }
+    }
+}

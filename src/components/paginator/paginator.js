@@ -1,24 +1,17 @@
 import { useDispatch } from "react-redux";
 import { apiChangePagination } from "../../redux/actions/apiActionsCreator";
 
-export const Paginator = ({ totalCount, itemsPerPage, currentPage }) => {
+export const Paginator = ({ totalCount, itemsPerPage, currentPage, favorite }) => {
 
-    const maxNumberPages = 5;
     const dispatch = useDispatch();
 
     const changePage = (page) => {
-        dispatch(apiChangePagination(page - 1, `?page=${ page - 1 }&itemsPerPage=${ itemsPerPage }`))
+        dispatch(apiChangePagination(page - 1, `?page=${ page - 1 }&itemsPerPage=${ itemsPerPage }&favorite=${ favorite }`))
     }
 
     const dividePage = () => {
         let pages = [];
         const pagesNumber = Math.ceil(totalCount / itemsPerPage);
-
-        let pagesShow = [];
-
-        if( currentPage > 1 ) {
-            
-        }
         
         for( let i = 1; i <= pagesNumber; i++ ) {
             pages.push(i);

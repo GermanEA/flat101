@@ -9,7 +9,7 @@ const initialState = {
   },
   error: '',
   currentPage: 0,
-  filterActive: true,
+  filterFav: true,
   toastMessage: ''
 };
 
@@ -52,7 +52,7 @@ const apiReducer = (state = initialState, action) => {
             totalCount: 1,
             nextPage: 0
         },
-        error: ''
+        error: '',
     };
 
     case ACTION_TYPES.DELETE_PRODUCT:
@@ -66,20 +66,22 @@ const apiReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: ''
+        error: '',
+        currentPage: 0
     };
 
     case ACTION_TYPES.CREATE_PRODUCT:
       return {
         ...state,
         loading: true,
-        error: ''
+        error: '',
+        currentPage: 0
     };
 
-    case ACTION_TYPES.CHANGE_FILTER_ACTIVE:
+    case ACTION_TYPES.CHANGE_FILTER_FAVORITE:
       return {
         ...state,
-        filterActive: action.payload,
+        filterFav: action.payload,
         loading: true,
         currentPage: 0
     };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants/apiConstants';
-import {fetchData, fetchSuccess, fetchError, recoverProduct, deleteProduct, updateProduct, createProduct, changeFilterActive, changePagination, toastMessage} from './apiActions';
+import {fetchData, fetchSuccess, fetchError, recoverProduct, deleteProduct, updateProduct, createProduct, changeFilterFavorite, changePagination, toastMessage, sortProducts} from './apiActions';
 
 export const apiActionCreator = (url) => (dispatch) => {
     dispatch(fetchData());
@@ -45,11 +45,11 @@ export const apiDeleteProduct = (url) => (dispatch) => {
     });
 }
 
-export const apiUpdateProduct = (url, { _id, name, description, active, price }) => (dispatch) => {
+export const apiUpdateProduct = (url, { _id, name, description, favorite, price }) => (dispatch) => {
     dispatch(updateProduct());
     return new Promise(() => {
         axios
-            .put(BASE_URL + url, { name, description, active: active + '', price })
+            .put(BASE_URL + url, { name, description, favorite: favorite + '', price })
             .then((response) => {
                 dispatch(toastMessage('Producto actualizado correctamente'));
                 dispatch(toastMessage(''));
@@ -60,11 +60,11 @@ export const apiUpdateProduct = (url, { _id, name, description, active, price })
     });
 }
 
-export const apiCreateProduct = ({ _id, name, description, active, price, SKU }) => (dispatch) => {
+export const apiCreateProduct = ({ name, description, favorite, price, SKU }) => (dispatch) => {
     dispatch(createProduct());
     return new Promise(() => {
         axios
-            .post(BASE_URL, { name, description, active: active + '', price, SKU })
+            .post(BASE_URL, { name, description, favorite: favorite + '', price, SKU })
             .then((response) => {
                 dispatch(toastMessage('Producto creado correctamente'));
                 dispatch(toastMessage(''));
@@ -75,8 +75,8 @@ export const apiCreateProduct = ({ _id, name, description, active, price, SKU })
     });
 }
 
-export const apiChangeFilterActive = (filterActive, url) => (dispatch) => {
-    dispatch(changeFilterActive(filterActive));
+export const apiChangeFilterFavorite = (filter, url) => (dispatch) => {
+    dispatch(changeFilterFavorite(filter));
     return new Promise(() => {
         axios
             .get(BASE_URL + url)
@@ -101,4 +101,8 @@ export const apiChangePagination = (page, url) => (dispatch) => {
                 dispatch(fetchError(error));
             });
     });
+}
+
+export const apiSortProducts = (data) => (dispatch) => {
+    dispatch(sortProducts(data));
 }

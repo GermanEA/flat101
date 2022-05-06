@@ -36,12 +36,17 @@ export const createProduct = () => ({
     type: ACTION_TYPES.CREATE_PRODUCT
 });
 
-export const changeFilterActive = (filterActive) => ({
-    type: ACTION_TYPES.CHANGE_FILTER_ACTIVE,
-    payload: filterActive
+export const changeFilterFavorite = (filter) => ({
+    type: ACTION_TYPES.CHANGE_FILTER_FAVORITE,
+    payload: filter
 });
 
 export const changePagination = (page) => ({
     type: ACTION_TYPES.CHANGE_PAGINATION,
     payload: page
+});
+
+export const sortProducts = (data) => ({
+    type: ACTION_TYPES.SORT_PRODUCTS,
+    payload: data
 });

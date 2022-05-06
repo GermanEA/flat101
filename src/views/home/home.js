@@ -1,26 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate  } from 'react-router-dom';
 
-import { apiActionCreator } from "../../redux/actions/apiActionsCreator";
+import { apiActionCreator, apiChangeFilterFavorite } from "../../redux/actions/apiActionsCreator";
 
 import ActivityIndicator from "../../components/activityIndicator";
-import { ITEMS_PER_PAGE } from '../../redux/constants/apiConstants';
 import Menu from "../../components/menu";
 import ProductCard from "../../components/products";
 import Paginator from "../../components/paginator";
 import FilterSelect from "../../components/filterSelect";
+import useItemsPerPage from "../../hooks/useItemsPerPage";
 
 const optionsSelectProducts = [
     {
-        value: 0,
-        name: "Todos"
-    },
-    {
-        value: 1,
+        value: true,
         name: "Favoritos"
     },
     {
-        value: 2,
+        value: false,
         name: "No Favoritos"
     }
 ];
@@ -39,14 +36,18 @@ const optionsSelectOrder = [
 export const Home = () => {
 
     const dispatch = useDispatch();
-    const { data: { list, totalCount }, loading, currentPage } = useSelector((state) => state.apiReducer);
+    const { data: { list, totalCount }, loading, currentPage, filterFav } = useSelector((state) => state.apiReducer);
     
+    const navigate = useNavigate();
+
+    const itemsPerPage = useItemsPerPage();
+
     const [visibleFilterOne, setVisibleFilterOne] = useState(false);
     const [visibleFilterTwo, setVisibleFilterTwo] = useState(false);
     
     useEffect(() => {
-        dispatch(apiActionCreator(`?page=0&itemsPerPage=${ ITEMS_PER_PAGE }`));
-    }, [dispatch]); 
+        dispatch(apiActionCreator(`?page=${ currentPage }&itemsPerPage=${ itemsPerPage }&favorite=${ filterFav }`));
+    }, [itemsPerPage]); 
 
     useEffect(() => {
         if( visibleFilterOne ){
@@ -62,12 +63,26 @@ export const Home = () => {
         }
     }, [visibleFilterTwo])
     
+    const changeFavorites = (fav) => {
+        dispatch(apiChangeFilterFavorite(fav, `?page=0&itemsPerPage=${ itemsPerPage }&favorite=${ fav }`));
+    }
+
+    const changeSort = (sort) => {
+        console.log(sort);
+    }
+
+    const handlePress = () => {
+        navigate('/create');
+    }
 
     return (
         <div className="main__container">        
             {/* Menú principal */}
             <div className="nav__container">
-                <Menu />
+                <Menu 
+                    title='Crear producto'
+                    callback={ handlePress }
+                />
             </div>
             
             <div className="content__container">
@@ -88,12 +103,14 @@ export const Home = () => {
                                     options={ optionsSelectProducts }
                                     visible={ visibleFilterOne }
                                     setVisible={ setVisibleFilterOne }
+                                    callback={ changeFavorites }
                                 />
                                 <FilterSelect 
                                     name="ORDENAR POR"
                                     options={ optionsSelectOrder}
                                     visible={ visibleFilterTwo }
                                     setVisible={ setVisibleFilterTwo }
+                                    callback={ changeSort }
                                 />
                             </div>
 
@@ -113,8 +130,9 @@ export const Home = () => {
                             <div className="paginator__container">
                                 <Paginator 
                                     totalCount={ totalCount }
-                                    itemsPerPage={ ITEMS_PER_PAGE }
+                                    itemsPerPage={ itemsPerPage }
                                     currentPage={ currentPage }
+                                    favorite={ filterFav }
                                 />
                             </div>
                         </>

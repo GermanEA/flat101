@@ -4,6 +4,10 @@
     margin-bottom: 20px;
     width: 50%;
 
+    @media screen and (min-width: $breakpoint-desktop) {
+        width: 25%;
+    }
+
     &:nth-child(odd) {
         padding-left: 14px;
         padding-right: 7px;

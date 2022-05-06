@@ -4,8 +4,9 @@
 
     .nav__left {
         @include flex(50%, row, flex-start, center);
+        cursor: pointer;
 
-        .left__Item {
+        .left__item {
             padding: 10px 20px;
         }
     }

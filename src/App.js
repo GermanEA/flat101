@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import  store  from './redux/store/store';
 
 import Home from "./views/home";
+import AddProduct from "./views/addProduct";
+import UpdateProduct from "./views/updateProduct";
 import './styles/styles.scss';
 
 const App = () => {
@@ -13,6 +15,8 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="create" element={<AddProduct />} />
+                    <Route path="update/:id" element={<UpdateProduct />} />
                     <Route
                         path="*"
                         element={

@@ -9,9 +9,15 @@
 
 // Colores
 $black: #343434;
+$white: #fff;
 $greyLight: #e3e3e3;
 $greyMedium: #c2c2c2;
 $greyDark: #555555;
 $primaryBackground: #ffffff;
 $primaryColor: #1e1e1e;
 $red: #fc4141;
+
+// Mediaqueries breakpoints
+$breakpoint-mini: 360px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
