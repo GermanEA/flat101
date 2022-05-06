@@ -15,8 +15,6 @@ const initialStateForm = {
 }
 
 export const Form = ({ onHandleSubmit, submitText, init = initialStateForm }) => {   
-    
-    
 
     const { register, formState: { errors, isSubmitSuccessful  }, handleSubmit, reset } = useForm(init);   
 
@@ -60,7 +58,7 @@ export const Form = ({ onHandleSubmit, submitText, init = initialStateForm }) =>
             </div>
 
             <div className="form__item">
-                <input className={ errors.price?.type === 'required' ? 'has-error' : null } type="number" {...register("price", { required: true, min: 0 })} placeholder="Precio del producto" />
+                <input className={ errors.price?.type === 'required' ? 'has-error' : null } type="number" {...register("price", { required: true, min: 0 })}  step="any" placeholder="Precio del producto" />
                 <div className="form__error">
                     {
                         errors.price?.type === 'required' && "Introduce un precio válido"

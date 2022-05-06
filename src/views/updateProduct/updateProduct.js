@@ -16,9 +16,12 @@ export const UpdateProduct = () => {
     const { data: { list }, loading } = useSelector((state) => state.apiReducer);
 
     useEffect(() => {
-        dispatch(apiRecoverProduct(`/${ params.id }`));
-    }, [dispatch, params.id])
+        getApiRecoverProduct();
+    }, [])
     
+    const getApiRecoverProduct = () => {
+        dispatch(apiRecoverProduct(`/${ params.id }`));
+    }
 
     const handlePress = () => {
         navigate('/');

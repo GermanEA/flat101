@@ -46,8 +46,8 @@ export const Home = () => {
     const [visibleFilterTwo, setVisibleFilterTwo] = useState(false);
     
     useEffect(() => {
-        dispatch(apiActionCreator(`?page=${ currentPage }&itemsPerPage=${ itemsPerPage }&favorite=${ filterFav }`));
-    }, [itemsPerPage]); 
+        getApiRecoverProduct();
+    }, []); 
 
     useEffect(() => {
         if( visibleFilterOne ){
@@ -62,6 +62,10 @@ export const Home = () => {
             setVisibleFilterTwo(true);
         }
     }, [visibleFilterTwo])
+
+    const getApiRecoverProduct = () => {
+        dispatch(apiActionCreator(`?page=${ currentPage }&itemsPerPage=${ itemsPerPage }&favorite=${ filterFav }`));
+    }
     
     const changeFavorites = (fav) => {
         dispatch(apiChangeFilterFavorite(fav, `?page=0&itemsPerPage=${ itemsPerPage }&favorite=${ fav }`));

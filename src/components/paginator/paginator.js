@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+
 import { apiChangePagination } from "../../redux/actions/apiActionsCreator";
 
 export const Paginator = ({ totalCount, itemsPerPage, currentPage, favorite }) => {
